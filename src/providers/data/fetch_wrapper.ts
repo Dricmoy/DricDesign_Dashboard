@@ -5,6 +5,7 @@ type Error = {
     statusCode: String;
 }
 
+//Custom Fetch Function that will be added to the header of every fetch request sent
 const customFetch = async (url: string, options: RequestInit) => {
     const accessToken  = localStorage.getItem('access_token');
 
@@ -21,6 +22,8 @@ const customFetch = async (url: string, options: RequestInit) => {
     })
 }
 
+
+// Custom GraphQL Error handling function
 const getGraphQLErrors = (body: Record<"errors", GraphQLFormattedError[] | undefined>):
 Error | null => {
     if (!body) {
@@ -45,7 +48,8 @@ Error | null => {
     return null;
 }
 
-const fetchWrapper = async (url: string, options: RequestInit) => {
+//the default wrapper
+export const fetchWrapper = async (url: string, options: RequestInit) => {
     const response = await customFetch(url, options);
 
     const responseClone = response.clone();
