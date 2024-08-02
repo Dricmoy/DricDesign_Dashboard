@@ -31,9 +31,6 @@ import "@refinedev/antd/dist/reset.css";
 const App = () => {
   return (
     <BrowserRouter>
-      <ConfigProvider theme={RefineThemes.Blue}>
-        <AntdApp>
-          <DevtoolsProvider>
             <Refine
               routerProvider={routerProvider}
               dataProvider={dataProvider}
@@ -100,10 +97,6 @@ const App = () => {
               <UnsavedChangesNotifier />
               <DocumentTitleHandler />
             </Refine>
-            <DevtoolsPanel />
-          </DevtoolsProvider>
-        </AntdApp>
-      </ConfigProvider>
     </BrowserRouter>
   );
 };
